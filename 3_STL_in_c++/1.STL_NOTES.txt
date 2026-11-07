@@ -1,0 +1,1642 @@
+C++ STANDARD TEMPLATE LIBRARY (STL) – COMPLETE DETAILED NOTES
+
+1. INTRODUCTION TO STL
+
+Definition:
+The Standard Template Library (STL) is a collection of generic classes and functions in C++ that provides ready-made data structures and algorithms.
+
+Purpose of STL:
+1. Reduces programming time.
+2. Provides reusable code.
+3. Makes programs efficient and easier to maintain.
+4. Provides predefined containers and algorithms.
+5. Supports generic programming using templates.
+6. Reduces the need to implement data structures manually.
+
+Main Components of STL:
+1. Containers
+2. Algorithms
+3. Iterators
+4. Function Objects (Functors)
+5. Adaptors
+6. Allocators
+
+STL Header:
+#include <bits/stdc++.h>
+using namespace std;
+
+Note: <bits/stdc++.h> is commonly used in competitive programming. In standard C++ programs, individual headers can be included.
+
+2. CONTAINERS IN STL
+
+Definition:
+Containers are objects used to store and organize collections of data.
+
+Types of Containers:
+
+A. Sequence Containers
+B. Associative Containers
+C. Unordered Associative Containers
+D. Container Adaptors
+
+A. SEQUENCE CONTAINERS
+
+Definition:
+Sequence containers store elements in a linear order.
+
+1. VECTOR
+
+Header: #include <vector>
+
+Definition:
+Vector is a dynamic array that can automatically increase or decrease its size.
+
+Features:
+- Stores elements in continuous memory.
+- Supports random access.
+- Allows insertion and deletion.
+- Automatically manages memory.
+- Fast access using indexes.
+
+Declaration:
+vector<int> v;
+
+Initialization:
+vector<int> v = {10, 20, 30, 40};
+vector<int> v(5);
+vector<int> v(5, 100);
+
+Important Functions:
+- push_back(x): Adds an element at the end.
+- pop_back(): Removes the last element.
+- size(): Returns the number of elements.
+- capacity(): Returns allocated storage capacity.
+- empty(): Checks whether vector is empty.
+- clear(): Removes all elements.
+- front(): Returns the first element.
+- back(): Returns the last element.
+- at(i): Accesses an element with bounds checking.
+- v[i]: Accesses an element without bounds checking.
+- insert(): Inserts an element at a position.
+- erase(): Removes an element or range.
+- resize(): Changes the number of elements.
+- reserve(): Reserves memory capacity.
+- swap(): Exchanges two vectors.
+
+Example:
+vector<int> v = {10, 20, 30};
+v.push_back(40);
+v.pop_back();
+
+2. PAIR
+
+Header: #include <utility>
+
+Definition:
+Pair is used to store two values together, which may have different data types.
+
+Declaration:
+pair<int, string> p;
+
+Initialization:
+pair<int, string> p = {1, "Ayush"};
+
+Access:
+p.first;
+p.second;
+
+Example:
+pair<int, int> p = {10, 20};
+cout << p.first << " " << p.second;
+
+Useful Functions:
+- make_pair(): Creates a pair.
+- first: Accesses the first value.
+- second: Accesses the second value.
+
+IMPORTANT PAIR FUNCTIONS AND OPERATIONS
+
+1. first – Accesses the first element of a pair.
+2. second – Accesses the second element of a pair.
+3. make_pair() – Creates a pair without explicitly specifying data types.
+4. swap() – Exchanges the values of two pairs.
+5. get<0>() – Accesses the first element of a pair.
+6. get<1>() – Accesses the second element of a pair.
+7. tie() – Unpacks pair elements into separate variables.
+8. operator == – Checks whether two pairs are equal.
+9. operator != – Checks whether two pairs are different.
+10. operator < – Checks whether one pair is lexicographically smaller.
+11. operator > – Checks whether one pair is lexicographically greater.
+12. operator <= – Checks whether one pair is smaller than or equal to another.
+13. operator >= – Checks whether one pair is greater than or equal to another.
+
+3. LIST
+
+Header: #include <list>
+
+Definition:
+List is a doubly linked list that allows efficient insertion and deletion at any position when an iterator to that position is available.
+
+Features:
+- Elements are not stored in continuous memory.
+- Supports forward and backward traversal.
+- Does not support direct indexing.
+- Efficient insertion and deletion.
+
+Declaration:
+list<int> l;
+
+Initialization:
+list<int> l = {10, 20, 30};
+
+Important Functions:
+- push_back(x): Adds element at the end.
+- push_front(x): Adds element at the beginning.
+- pop_back(): Removes the last element.
+- pop_front(): Removes the first element.
+- front(): Returns the first element.
+- back(): Returns the last element.
+- size(): Returns the number of elements.
+- empty(): Checks whether list is empty.
+- clear(): Removes all elements.
+- insert(): Inserts an element.
+- erase(): Removes an element.
+- remove(x): Removes all occurrences of x.
+- reverse(): Reverses the list.
+- sort(): Sorts the list.
+- unique(): Removes consecutive duplicate elements.
+- merge(): Merges two sorted lists.
+- splice(): Transfers elements from another list.
+
+4. DEQUE (DOUBLE ENDED QUEUE)
+
+Header: #include <deque>
+
+Definition:
+Deque is a double-ended queue that allows insertion and deletion from both ends.
+
+Features:
+- Supports random access.
+- Insertion and deletion at both ends are efficient.
+- Can grow and shrink dynamically.
+
+Declaration:
+deque<int> dq;
+
+Important Functions:
+- push_back(x): Adds element at the end.
+- push_front(x): Adds element at the beginning.
+- pop_back(): Removes the last element.
+- pop_front(): Removes the first element.
+- front(): Returns the first element.
+- back(): Returns the last element.
+- size(): Returns the number of elements.
+- empty(): Checks whether deque is empty.
+- clear(): Removes all elements.
+- insert(): Inserts an element.
+- erase(): Removes an element.
+
+5. ARRAY
+
+Header: #include <array>
+
+Definition:
+Array is a fixed-size container that stores elements of the same data type.
+
+Declaration:
+array<int, 5> arr;
+
+Initialization:
+array<int, 5> arr = {10, 20, 30, 40, 50};
+
+Important Functions:
+- at(i): Accesses an element with bounds checking.
+- size(): Returns the number of elements.
+- front(): Returns the first element.
+- back(): Returns the last element.
+- fill(x): Fills all elements with x.
+- swap(): Exchanges two arrays.
+- empty(): Checks whether the array is empty.
+
+Features:
+- Fixed size.
+- Continuous memory.
+- Supports random access.
+- Size cannot be changed after declaration.
+
+B. ASSOCIATIVE CONTAINERS
+
+Definition:
+Associative containers store elements in sorted order using keys.
+
+1. SET
+
+Header: #include <set>
+
+Definition:
+Set stores unique elements in sorted ascending order by default.
+
+Features:
+- Does not allow duplicate elements.
+- Automatically maintains sorted order.
+- Usually implemented using a balanced binary search tree.
+- Search, insertion and deletion take O(log n) time.
+
+Declaration:
+set<int> s;
+
+Initialization:
+set<int> s = {10, 20, 30, 40};
+
+Important Functions:
+- insert(x): Inserts an element.
+- erase(x): Removes an element.
+- find(x): Searches for an element.
+- count(x): Returns 1 if present, otherwise 0.
+- size(): Returns the number of elements.
+- empty(): Checks whether set is empty.
+- clear(): Removes all elements.
+- begin(): Returns iterator to the first element.
+- end(): Returns iterator past the last element.
+- lower_bound(x): Returns the first element greater than or equal to x.
+- upper_bound(x): Returns the first element greater than x.
+
+2. MULTISET
+
+Header: #include <set>
+
+Definition:
+Multiset stores elements in sorted order and allows duplicate values.
+
+Features:
+- Allows duplicate elements.
+- Maintains sorted order.
+- Supports insertion and deletion.
+- Usually implemented using a balanced binary search tree.
+
+Declaration:
+multiset<int> ms;
+
+Important Functions:
+- insert(x)
+- erase(x)
+- find(x)
+- count(x)
+- size()
+- empty()
+- clear()
+- lower_bound(x)
+- upper_bound(x)
+
+Important Difference:
+set<int> s;       // Unique elements
+multiset<int> ms; // Duplicate elements allowed
+
+3. MAP
+
+Header: #include <map>
+
+Definition:
+Map stores data in key-value pairs, where every key is unique and elements are sorted according to keys.
+
+Features:
+- Stores key-value pairs.
+- Keys must be unique.
+- Automatically maintains sorted keys.
+- Usually implemented using a balanced binary search tree.
+- Search, insertion and deletion take O(log n) time.
+
+Declaration:
+map<int, string> mp;
+
+Initialization:
+map<int, string> mp = {
+    {1, "Apple"},
+    {2, "Banana"},
+    {3, "Mango"}
+};
+
+Access:
+mp[1];
+mp.at(2);
+
+Important Functions:
+- insert(): Inserts a key-value pair.
+- erase(key): Removes a key.
+- find(key): Searches for a key.
+- count(key): Checks whether key exists.
+- size(): Returns the number of pairs.
+- empty(): Checks whether map is empty.
+- clear(): Removes all elements.
+- begin(): Returns iterator to first pair.
+- end(): Returns iterator past last pair.
+- lower_bound(key): Finds first key greater than or equal to key.
+- upper_bound(key): Finds first key greater than key.
+- at(key): Accesses the mapped value with bounds checking.
+
+Example:
+map<int, string> mp;
+mp[1] = "Ayush";
+mp[2] = "Rahul";
+
+4. MULTIMAP
+
+Header: #include <map>
+
+Definition:
+Multimap stores key-value pairs in sorted order and allows duplicate keys.
+
+Features:
+- Duplicate keys are allowed.
+- Keys remain sorted.
+- One key can have multiple associated values.
+- Usually implemented using a balanced binary search tree.
+
+Declaration:
+multimap<int, string> mm;
+
+Example:
+mm.insert({1, "Apple"});
+mm.insert({1, "Banana"});
+mm.insert({2, "Mango"});
+
+Important Functions:
+- insert()
+- erase()
+- find()
+- count()
+- size()
+- empty()
+- clear()
+- lower_bound()
+- upper_bound()
+- equal_range()
+
+C. UNORDERED ASSOCIATIVE CONTAINERS
+
+Definition:
+Unordered containers store elements using hashing instead of maintaining sorted order.
+
+Features:
+- Elements are not stored in sorted order.
+- Average insertion, deletion and search complexity is O(1).
+- Worst-case complexity can be O(n).
+- Use hash tables internally.
+
+1. UNORDERED SET
+
+Header: #include <unordered_set>
+
+Definition:
+Unordered set stores unique elements without maintaining any specific order.
+
+Declaration:
+unordered_set<int> us;
+
+Functions:
+- insert(x)
+- erase(x)
+- find(x)
+- count(x)
+- size()
+- empty()
+- clear()
+- bucket_count()
+- load_factor()
+- rehash()
+
+2. UNORDERED MULTISET
+
+Header: #include <unordered_set>
+
+Definition:
+Unordered multiset stores duplicate elements without maintaining sorted order.
+
+Declaration:
+unordered_multiset<int> ums;
+
+Functions:
+- insert()
+- erase()
+- find()
+- count()
+- size()
+- empty()
+- clear()
+- equal_range()
+
+3. UNORDERED MAP
+
+Header: #include <unordered_map>
+
+Definition:
+Unordered map stores unique key-value pairs without maintaining sorted key order.
+
+Declaration:
+unordered_map<int, string> ump;
+
+Example:
+ump[1] = "Ayush";
+ump[2] = "Rahul";
+
+Functions:
+- insert()
+- erase()
+- find()
+- count()
+- size()
+- empty()
+- clear()
+- bucket_count()
+- load_factor()
+- rehash()
+
+4. UNORDERED MULTIMAP
+
+Header: #include <unordered_map>
+
+Definition:
+Unordered multimap stores key-value pairs and allows duplicate keys without maintaining sorted order.
+
+Declaration:
+unordered_multimap<int, string> umm;
+
+Functions:
+- insert()
+- erase()
+- find()
+- count()
+- size()
+- empty()
+- clear()
+- equal_range()
+
+D. CONTAINER ADAPTORS
+
+Definition:
+Container adaptors provide a restricted interface to an underlying container and implement specific data structures.
+
+1. STACK
+
+Header: #include <stack>
+
+Definition:
+Stack is a linear data structure that follows LIFO (Last In, First Out).
+
+Example:
+stack<int> st;
+
+Important Functions:
+- push(x): Inserts an element at the top.
+- pop(): Removes the top element.
+- top(): Returns the top element.
+- size(): Returns the number of elements.
+- empty(): Checks whether stack is empty.
+- swap(): Exchanges two stacks.
+
+Example:
+stack<int> st;
+st.push(10);
+st.push(20);
+st.push(30);
+
+cout << st.top(); // 30
+st.pop();
+
+2. QUEUE
+
+Header: #include <queue>
+
+Definition:
+Queue is a linear data structure that follows FIFO (First In, First Out).
+
+Example:
+queue<int> q;
+
+Important Functions:
+- push(x): Inserts an element at the rear.
+- pop(): Removes the front element.
+- front(): Returns the first element.
+- back(): Returns the last element.
+- size(): Returns the number of elements.
+- empty(): Checks whether queue is empty.
+- swap(): Exchanges two queues.
+
+3. PRIORITY QUEUE
+
+Header: #include <queue>
+
+Definition:
+Priority queue is a container adaptor in which the element with the highest priority is accessed first.
+
+By default, it works as a max heap.
+
+Max Heap:
+Largest element stays at the top.
+
+Declaration:
+priority_queue<int> pq;
+
+Min Heap:
+Smallest element stays at the top.
+
+Declaration:
+priority_queue<int, vector<int>, greater<int>> pq;
+
+Important Functions:
+- push(x): Inserts an element.
+- pop(): Removes the top element.
+- top(): Returns the highest-priority element.
+- size(): Returns the number of elements.
+- empty(): Checks whether priority queue is empty.
+- swap(): Exchanges two priority queues.
+
+3. ITERATORS IN STL
+
+Definition:
+Iterators are objects that behave like pointers and are used to access and traverse elements of containers.
+
+Purpose:
+- Access container elements.
+- Traverse containers.
+- Connect containers with algorithms.
+- Support generic programming.
+
+Types of Iterators:
+
+1. Input Iterator:
+Reads elements in forward direction.
+
+2. Output Iterator:
+Writes elements in forward direction.
+
+3. Forward Iterator:
+Reads and writes elements while moving forward.
+
+4. Bidirectional Iterator:
+Moves both forward and backward.
+
+5. Random Access Iterator:
+Supports direct access and movement in both directions.
+
+6. Contiguous Iterator:
+Provides random access to elements stored in continuous memory.
+
+Common Iterator Functions:
+
+- begin(): Returns iterator to the first element.
+- end(): Returns iterator past the last element.
+- rbegin(): Returns reverse iterator to the last element.
+- rend(): Returns reverse iterator before the first element.
+- cbegin(): Returns constant iterator to the first element.
+- cend(): Returns constant iterator past the last element.
+
+Iterator Operations:
+
+- *it: Accesses the current element.
+- ++it: Moves iterator forward.
+- --it: Moves iterator backward.
+- it + n: Moves iterator forward by n positions where supported.
+- it - n: Moves iterator backward by n positions where supported.
+- it1 == it2: Compares iterators.
+- it1 != it2: Checks whether iterators are different.
+
+Example:
+vector<int> v = {10, 20, 30};
+
+for(auto it = v.begin(); it != v.end(); it++)
+{
+    cout << *it << " ";
+}
+
+Output:
+10 20 30
+
+Reverse Iterator Example:
+
+for(auto it = v.rbegin(); it != v.rend(); it++)
+{
+    cout << *it << " ";
+}
+
+Output:
+30 20 10
+
+4. ALGORITHMS IN STL
+
+Definition:
+Algorithms are predefined functions used to perform operations on elements of containers through iterators.
+
+Header:
+#include <algorithm>
+
+Important STL Algorithms:
+
+1. sort()
+Definition: Sorts elements in ascending order by default.
+
+sort(v.begin(), v.end());
+
+Descending Order:
+sort(v.begin(), v.end(), greater<int>());
+
+2. reverse()
+Definition: Reverses the order of elements.
+
+reverse(v.begin(), v.end());
+
+3. find()
+Definition: Searches for a specific element.
+
+auto it = find(v.begin(), v.end(), 20);
+
+4. count()
+Definition: Counts occurrences of a particular element.
+
+int c = count(v.begin(), v.end(), 10);
+
+5. max_element()
+Definition: Returns an iterator to the maximum element.
+
+auto it = max_element(v.begin(), v.end());
+
+6. min_element()
+Definition: Returns an iterator to the minimum element.
+
+auto it = min_element(v.begin(), v.end());
+
+7. accumulate()
+Definition: Calculates the sum of elements in a range.
+
+Header: #include <numeric>
+
+int sum = accumulate(v.begin(), v.end(), 0);
+
+8. binary_search()
+Definition: Checks whether an element exists in a sorted range.
+
+binary_search(v.begin(), v.end(), 20);
+
+Returns true or false.
+
+9. lower_bound()
+Definition: Returns iterator to the first element greater than or equal to the given value in a sorted range.
+
+auto it = lower_bound(v.begin(), v.end(), 20);
+
+10. upper_bound()
+Definition: Returns iterator to the first element strictly greater than the given value in a sorted range.
+
+auto it = upper_bound(v.begin(), v.end(), 20);
+
+11. next_permutation()
+Definition: Generates the next lexicographically greater permutation.
+
+next_permutation(v.begin(), v.end());
+
+12. prev_permutation()
+Definition: Generates the previous lexicographical permutation.
+
+prev_permutation(v.begin(), v.end());
+
+13. swap()
+Definition: Exchanges two values.
+
+swap(a, b);
+
+14. unique()
+Definition: Removes consecutive duplicate values logically by moving unique elements to the beginning of the range.
+
+auto it = unique(v.begin(), v.end());
+v.erase(it, v.end());
+
+Note: Sort first if all duplicate values must be removed regardless of their original positions.
+
+15. remove()
+Definition: Moves all elements equal to a specified value to the end of the range and returns the new logical end.
+
+auto it = remove(v.begin(), v.end(), 20);
+v.erase(it, v.end());
+
+16. replace()
+Definition: Replaces all occurrences of a specified value with another value.
+
+replace(v.begin(), v.end(), 10, 100);
+
+17. fill()
+Definition: Assigns the same value to all elements in a range.
+
+fill(v.begin(), v.end(), 5);
+
+18. for_each()
+Definition: Applies a function to every element in a range.
+
+for_each(v.begin(), v.end(), [](int x) {
+    cout << x << " ";
+});
+
+19. all_of()
+Definition: Checks whether all elements satisfy a condition.
+
+all_of(v.begin(), v.end(), [](int x) {
+    return x > 0;
+});
+
+20. any_of()
+Definition: Checks whether at least one element satisfies a condition.
+
+any_of(v.begin(), v.end(), [](int x) {
+    return x > 0;
+});
+
+21. none_of()
+Definition: Checks whether no elements satisfy a condition.
+
+none_of(v.begin(), v.end(), [](int x) {
+    return x < 0;
+});
+
+22. partition()
+Definition: Rearranges elements so that elements satisfying a condition appear before the others.
+
+partition(v.begin(), v.end(), [](int x) {
+    return x % 2 == 0;
+});
+
+23. stable_sort()
+Definition: Sorts elements while preserving the relative order of equivalent elements.
+
+stable_sort(v.begin(), v.end());
+
+24. nth_element()
+Definition: Places the element that would occupy the nth position after sorting at that position without fully sorting the range.
+
+nth_element(v.begin(), v.begin() + 2, v.end());
+
+25. merge()
+Definition: Merges two sorted ranges into a sorted output range.
+
+merge(a.begin(), a.end(), b.begin(), b.end(), result.begin());
+
+26. set_union()
+Definition: Produces the union of two sorted ranges.
+
+set_union(a.begin(), a.end(), b.begin(), b.end(), result.begin());
+
+27. set_intersection()
+Definition: Produces common elements of two sorted ranges.
+
+set_intersection(a.begin(), a.end(), b.begin(), b.end(), result.begin());
+
+28. set_difference()
+Definition: Produces elements present in the first sorted range but not in the second.
+
+set_difference(a.begin(), a.end(), b.begin(), b.end(), result.begin());
+
+29. set_symmetric_difference()
+Definition: Produces elements present in either sorted range but not in both.
+
+set_symmetric_difference(a.begin(), a.end(), b.begin(), b.end(), result.begin());
+
+30. rotate()
+Definition: Rotates elements in a range around a specified middle position.
+
+rotate(v.begin(), v.begin() + 2, v.end());
+
+31. shuffle()
+Definition: Randomly rearranges elements in a range.
+
+shuffle(v.begin(), v.end(), mt19937(random_device{}()));
+
+32. copy()
+Definition: Copies elements from one range to another.
+
+copy(v.begin(), v.end(), result.begin());
+
+33. remove_if()
+Definition: Removes elements logically based on a condition.
+
+auto it = remove_if(v.begin(), v.end(), [](int x) {
+    return x % 2 == 0;
+});
+v.erase(it, v.end());
+
+34. transform()
+Definition: Applies an operation to each element and stores the result.
+
+transform(v.begin(), v.end(), v.begin(), [](int x) {
+    return x * 2;
+});
+
+5. FUNCTION OBJECTS (FUNCTORS)
+
+Definition:
+A function object is an object that behaves like a function by overloading the function call operator ().
+
+Purpose:
+- Used to customize operations.
+- Used with STL algorithms.
+- Supports flexible comparisons and calculations.
+
+Examples of Built-in Functors:
+
+1. less<int>
+Returns true when the first value is less than the second.
+
+2. greater<int>
+Returns true when the first value is greater than the second.
+
+3. equal_to<int>
+Checks whether two values are equal.
+
+4. not_equal_to<int>
+Checks whether two values are different.
+
+5. greater_equal<int>
+Checks whether the first value is greater than or equal to the second.
+
+6. less_equal<int>
+Checks whether the first value is less than or equal to the second.
+
+7. plus<int>
+Adds two values.
+
+8. minus<int>
+Subtracts two values.
+
+9. multiplies<int>
+Multiplies two values.
+
+10. divides<int>
+Divides two values.
+
+Example:
+sort(v.begin(), v.end(), greater<int>());
+
+This sorts the vector in descending order.
+
+6. LAMBDA EXPRESSIONS IN STL
+
+Definition:
+A lambda expression is an anonymous function that can be written directly inside a program.
+
+Syntax:
+[capture](parameters) -> return_type {
+    // Statements
+};
+
+Example:
+auto square = [](int x) {
+    return x * x;
+};
+
+cout << square(5);
+
+Output:
+25
+
+Uses in STL:
+- Custom sorting.
+- Filtering elements.
+- Searching.
+- Applying operations.
+- Custom conditions.
+
+Example:
+sort(v.begin(), v.end(), [](int a, int b) {
+    return a > b;
+});
+
+7. ADAPTORS IN STL
+
+Definition:
+Adaptors modify or restrict the interface of existing containers or functions to provide specific behavior.
+
+Types:
+
+1. Container Adaptors:
+Stack, Queue and Priority Queue.
+
+2. Iterator Adaptors:
+Reverse iterators, insert iterators and stream iterators.
+
+3. Function Adaptors:
+Binders and function wrappers.
+
+Important Iterator Adaptors:
+
+- reverse_iterator: Allows backward traversal.
+- back_inserter: Inserts elements at the end of a container.
+- front_inserter: Inserts elements at the beginning.
+- inserter: Inserts elements at a specified position.
+- istream_iterator: Reads values from an input stream.
+- ostream_iterator: Writes values to an output stream.
+
+Example:
+vector<int> v;
+back_inserter(v) = 10; 
+
+More commonly used:
+vector<int> a = {1, 2, 3};
+vector<int> b;
+
+copy(a.begin(), a.end(), back_inserter(b));
+
+8. ALLOCATORS IN STL
+
+Definition:
+Allocators are objects responsible for managing memory allocation and deallocation for STL containers.
+
+Purpose:
+- Allocate memory.
+- Deallocate memory.
+- Manage storage for container elements.
+- Separate memory management from container logic.
+
+Default Allocator:
+Most STL containers use std::allocator by default.
+
+Example:
+vector<int, allocator<int>> v;
+
+9. TIME COMPLEXITY OF STL CONTAINERS
+
+Time complexity describes how the execution time of an operation changes as the number of elements increases.
+
+VECTOR:
+- Random access: O(1)
+- push_back: Amortized O(1)
+- pop_back: O(1)
+- Insert at beginning: O(n)
+- Erase at beginning: O(n)
+- Search: O(n)
+
+LIST:
+- Access by position: O(n)
+- Insert at known position: O(1)
+- Erase at known position: O(1)
+- Search: O(n)
+- push_front: O(1)
+- push_back: O(1)
+
+DEQUE:
+- Random access: O(1)
+- push_front: O(1)
+- push_back: O(1)
+- pop_front: O(1)
+- pop_back: O(1)
+- Middle insertion/deletion: O(n)
+
+ARRAY:
+- Random access: O(1)
+- Search: O(n)
+- Insertion: Depends on shifting; array size is fixed.
+
+SET:
+- Search: O(log n)
+- Insert: O(log n)
+- Delete: O(log n)
+
+MULTISET:
+- Search: O(log n)
+- Insert: O(log n)
+- Delete: O(log n) for a single iterator; erasing by key also removes all matching elements.
+
+MAP:
+- Search: O(log n)
+- Insert: O(log n)
+- Delete: O(log n)
+
+MULTIMAP:
+- Search: O(log n)
+- Insert: O(log n)
+- Delete: O(log n) per erased element.
+
+UNORDERED SET:
+- Average search: O(1)
+- Average insertion: O(1)
+- Average deletion: O(1)
+- Worst case: O(n)
+
+UNORDERED MAP:
+- Average search: O(1)
+- Average insertion: O(1)
+- Average deletion: O(1)
+- Worst case: O(n)
+
+STACK:
+- push: O(1)
+- pop: O(1)
+- top: O(1)
+
+QUEUE:
+- push: O(1)
+- pop: O(1)
+- front: O(1)
+- back: O(1)
+
+PRIORITY QUEUE:
+- push: O(log n)
+- pop: O(log n)
+- top: O(1)
+
+10. IMPORTANT DIFFERENCES BETWEEN STL CONTAINERS
+
+VECTOR VS LIST:
+Vector:
+- Dynamic array.
+- Continuous memory.
+- Supports random access.
+- Insertion in the middle is generally O(n).
+- Better for frequent element access.
+
+List:
+- Doubly linked list.
+- Non-contiguous memory.
+- No random access.
+- Insertion and deletion at a known position are O(1).
+- Better for frequent insertions and deletions at known positions.
+
+VECTOR VS DEQUE:
+Vector:
+- Efficient insertion and deletion at the end.
+- Continuous memory.
+- Random access supported.
+
+Deque:
+- Efficient insertion and deletion at both ends.
+- Does not guarantee continuous storage.
+- Random access supported.
+
+SET VS MULTISET:
+Set:
+- Unique elements.
+- Sorted order.
+
+Multiset:
+- Duplicate elements allowed.
+- Sorted order.
+
+MAP VS MULTIMAP:
+Map:
+- Unique keys.
+- Sorted keys.
+
+Multimap:
+- Duplicate keys allowed.
+- Sorted keys.
+
+SET VS UNORDERED SET:
+Set:
+- Sorted elements.
+- O(log n) operations.
+
+Unordered Set:
+- No sorted order.
+- Average O(1) operations.
+
+MAP VS UNORDERED MAP:
+Map:
+- Sorted keys.
+- Unique keys.
+- O(log n) operations.
+
+Unordered Map:
+- No sorted order.
+- Unique keys.
+- Average O(1) operations.
+
+STACK VS QUEUE:
+Stack:
+- LIFO.
+- Insertion and deletion from the same end.
+
+Queue:
+- FIFO.
+- Insertion at rear and deletion from front.
+
+QUEUE VS PRIORITY QUEUE:
+Queue:
+- Follows FIFO.
+
+Priority Queue:
+- Elements are removed according to priority.
+- Default priority is the largest element first.
+
+11. STL PAIR AND TUPLE
+
+PAIR:
+Definition:
+Stores exactly two values, which can have different data types.
+
+Example:
+pair<int, string> p = {1, "Ayush"};
+
+TUPLE:
+Header: #include <tuple>
+
+Definition:
+Tuple stores multiple values of different data types in a single object.
+
+Example:
+tuple<int, string, float> t = {1, "Ayush", 85.5};
+
+Access:
+get<0>(t);
+get<1>(t);
+get<2>(t);
+
+Important Functions:
+- make_tuple(): Creates a tuple.
+- get<i>(): Accesses an element.
+- tuple_size: Gets the number of elements.
+- tie(): Unpacks tuple values into variables.
+
+12. IMPORTANT STL KEYWORDS
+
+AUTO:
+Definition:
+Automatically determines the data type of a variable.
+
+Example:
+auto x = 10;
+
+AUTO WITH ITERATORS:
+auto it = v.begin();
+
+CONST:
+Definition:
+Prevents modification of a variable through that reference or declaration.
+
+Example:
+const int x = 10;
+
+CONST ITERATOR:
+A constant iterator does not allow modification of the element through it.
+
+Example:
+auto it = v.cbegin();
+
+SIZE_T:
+Definition:
+An unsigned integer type commonly used to represent sizes and indexes.
+
+Example:
+size_t n = v.size();
+
+EMPLACE:
+Definition:
+Constructs an element directly inside a container instead of requiring a separately created object.
+
+Example:
+v.emplace_back(10);
+
+PUSH_BACK:
+Definition:
+Adds an existing value or object to the end of a vector.
+
+Example:
+v.push_back(10);
+
+PUSH_BACK VS EMPLACE_BACK:
+push_back():
+Adds an element to the end, typically by copying or moving an existing object.
+
+emplace_back():
+Constructs an element directly at the end using the provided arguments.
+
+ERASE:
+Definition:
+Removes elements from a container.
+
+Example:
+v.erase(v.begin());
+
+INSERT:
+Definition:
+Inserts elements at a specified position.
+
+Example:
+v.insert(v.begin(), 100);
+
+CLEAR:
+Definition:
+Removes all elements from a container.
+
+Example:
+v.clear();
+
+RESERVE:
+Definition:
+Allocates enough capacity for at least the specified number of elements without changing the vector's size.
+
+Example:
+v.reserve(100);
+
+RESIZE:
+Definition:
+Changes the number of elements in a container.
+
+Example:
+v.resize(10);
+
+SWAP:
+Definition:
+Exchanges the contents of two containers.
+
+Example:
+swap(v1, v2);
+
+13. COMMON STL HEADER FILES
+
+<vector>          - Vector
+<list>            - List
+<deque>           - Deque
+<array>           - Array
+<stack>           - Stack
+<queue>           - Queue and Priority Queue
+<set>             - Set and Multiset
+<map>             - Map and Multimap
+<unordered_set>   - Unordered Set and Unordered Multiset
+<unordered_map>   - Unordered Map and Unordered Multimap
+<algorithm>       - STL Algorithms
+<numeric>         - Numeric Algorithms
+<iterator>        - Iterator Utilities
+<utility>         - Pair and Utility Functions
+<tuple>           - Tuple
+<functional>      - Function Objects
+<memory>          - Memory Management and Allocators
+<string>          - String
+<random>          - Random Number Generation
+
+14. IMPORTANT STL NUMERIC FUNCTIONS
+
+Header: #include <numeric>
+
+1. accumulate()
+Calculates the sum of elements.
+
+2. iota()
+Fills a range with consecutive increasing values.
+
+Example:
+iota(v.begin(), v.end(), 1);
+
+3. inner_product()
+Calculates the inner product of two ranges.
+
+4. partial_sum()
+Calculates cumulative sums.
+
+5. adjacent_difference()
+Calculates differences between adjacent elements.
+
+6. reduce()
+Calculates a generalized sum of elements; it may use a different evaluation order from accumulate.
+
+7. gcd()
+Calculates the greatest common divisor.
+
+8. lcm()
+Calculates the least common multiple.
+
+15. STL IN COMPETITIVE PROGRAMMING
+
+Frequently Used STL Operations:
+
+1. Sort an array:
+sort(v.begin(), v.end());
+
+2. Sort in descending order:
+sort(v.begin(), v.end(), greater<int>());
+
+3. Find maximum:
+int mx = *max_element(v.begin(), v.end());
+
+4. Find minimum:
+int mn = *min_element(v.begin(), v.end());
+
+5. Calculate sum:
+int sum = accumulate(v.begin(), v.end(), 0);
+
+6. Remove duplicates:
+sort(v.begin(), v.end());
+v.erase(unique(v.begin(), v.end()), v.end());
+
+7. Count occurrences:
+int c = count(v.begin(), v.end(), 5);
+
+8. Binary search:
+bool found = binary_search(v.begin(), v.end(), 5);
+
+9. Find element:
+auto it = find(v.begin(), v.end(), 5);
+
+10. Reverse vector:
+reverse(v.begin(), v.end());
+
+11. Create a frequency map:
+map<int, int> freq;
+for(int x : v)
+    freq[x]++;
+
+12. Create a frequency unordered map:
+unordered_map<int, int> freq;
+for(int x : v)
+    freq[x]++;
+
+13. Remove even numbers:
+v.erase(remove_if(v.begin(), v.end(), [](int x) {
+    return x % 2 == 0;
+}), v.end());
+
+14. Find second largest distinct element:
+sort(v.begin(), v.end());
+v.erase(unique(v.begin(), v.end()), v.end());
+
+if(v.size() >= 2)
+    cout << v[v.size() - 2];
+
+16. RANGE-BASED FOR LOOP
+
+Definition:
+Range-based for loop is used to traverse all elements of a container without explicitly using iterators.
+
+Syntax:
+for(data_type variable : container)
+{
+    // Statements
+}
+
+Example:
+vector<int> v = {10, 20, 30};
+
+for(int x : v)
+{
+    cout << x << " ";
+}
+
+Using Reference:
+for(int &x : v)
+{
+    x *= 2;
+}
+
+Using Constant Reference:
+for(const int &x : v)
+{
+    cout << x << " ";
+}
+
+17. IMPORTANT STL CONCEPTS
+
+1. GENERIC PROGRAMMING:
+Writing code that works with different data types using templates.
+
+2. TEMPLATES:
+Templates allow functions and classes to work with different data types.
+
+3. ITERATOR INVALIDATION:
+Occurs when an iterator becomes invalid after container modification.
+
+Examples:
+- Vector reallocation can invalidate all iterators and references.
+- Vector insertion can invalidate iterators at or after the insertion point.
+- List insertion generally does not invalidate existing iterators.
+- Erasing an element invalidates iterators referring to erased elements.
+
+4. HASHING:
+A technique used to map keys to positions in a hash table.
+
+5. LOAD FACTOR:
+The ratio of the number of elements to the number of buckets in an unordered container.
+
+6. BUCKET:
+A storage location in a hash table that holds elements with the same bucket index.
+
+7. BIG-O NOTATION:
+Describes the upper bound of an algorithm's growth rate.
+
+Common complexities:
+O(1) - Constant
+O(log n) - Logarithmic
+O(n) - Linear
+O(n log n) - Linearithmic
+O(n²) - Quadratic
+
+8. STABLE SORTING:
+A sorting algorithm is stable if it preserves the relative order of elements with equal keys.
+
+9. IN-PLACE ALGORITHM:
+An algorithm that uses little or constant additional memory, excluding the input storage.
+
+10. LAZY DELETION:
+An approach where an element is logically removed without immediately removing its physical storage. This is not the standard behavior of ordinary STL erase operations.
+
+18. IMPORTANT STL SORTING DETAILS
+
+sort():
+- Uses introsort in typical standard library implementations.
+- Average and worst-case complexity: O(n log n).
+- Does not guarantee stability.
+
+stable_sort():
+- Preserves relative order of equivalent elements.
+- Typically O(n log n) when enough additional memory is available.
+
+partial_sort():
+- Sorts only the first specified number of elements.
+- Useful when only the smallest or largest k elements are needed.
+
+nth_element():
+- Places the nth element in its correctly sorted position.
+- Does not completely sort the range.
+- Average complexity: O(n).
+
+19. IMPORTANT STL INTERVIEW QUESTIONS
+
+Q1. What is STL?
+STL stands for Standard Template Library. It provides reusable containers, algorithms and iterators in C++.
+
+Q2. What are the main components of STL?
+Containers, algorithms, iterators, function objects, adaptors and allocators.
+
+Q3. What is a container?
+A container is an object that stores and organizes multiple elements.
+
+Q4. What is an iterator?
+An iterator is an object used to access and traverse container elements.
+
+Q5. What is the difference between vector and array?
+Vector is dynamic in size, whereas array has a fixed size.
+
+Q6. What is the difference between set and multiset?
+Set stores unique elements, whereas multiset allows duplicates.
+
+Q7. What is the difference between map and unordered_map?
+Map stores keys in sorted order, whereas unordered_map uses hashing and does not maintain sorted order.
+
+Q8. What is a stack?
+A stack is a LIFO data structure.
+
+Q9. What is a queue?
+A queue is a FIFO data structure.
+
+Q10. What is a priority queue?
+A priority queue provides access to the highest-priority element first.
+
+Q11. What is the default behavior of priority_queue?
+It is a max heap, so the largest element appears at the top.
+
+Q12. What is the difference between push_back() and emplace_back()?
+push_back() inserts an existing object, whereas emplace_back() constructs an object directly inside the container.
+
+Q13. What is the difference between begin() and end()?
+begin() points to the first element, while end() points just past the last element.
+
+Q14. What is the difference between lower_bound() and upper_bound()?
+lower_bound() finds the first element greater than or equal to a value, while upper_bound() finds the first element strictly greater than it.
+
+Q15. What is the difference between sort() and stable_sort()?
+sort() does not guarantee stability, while stable_sort() preserves the relative order of equivalent elements.
+
+Q16. What is the time complexity of vector access?
+O(1).
+
+Q17. What is the time complexity of set search?
+O(log n).
+
+Q18. What is the average time complexity of unordered_map search?
+O(1).
+
+Q19. What is a functor?
+A functor is an object that behaves like a function using operator().
+
+Q20. What is a lambda expression?
+A lambda is an anonymous function that can be defined directly in an expression.
+
+Q21. What is accumulate()?
+It is an STL numeric function used to calculate the accumulated result of a range, commonly its sum.
+
+Q22. What is binary_search()?
+It checks whether an element exists in a sorted range.
+
+Q23. What is the difference between erase() and clear()?
+erase() removes selected elements, while clear() removes all elements.
+
+Q24. What is reserve()?
+It allocates capacity for a vector without changing its size.
+
+Q25. What is resize()?
+It changes the number of elements in a container.
+
+Q26. What is iterator invalidation?
+It occurs when a container operation makes previously obtained iterators invalid.
+
+Q27. What is hashing?
+Hashing converts a key into a hash value used to locate an element in a hash table.
+
+Q28. What is a pair?
+Pair stores two values together.
+
+Q29. What is a tuple?
+Tuple stores multiple values of potentially different data types.
+
+Q30. Why is STL important?
+It saves development time, provides tested implementations and helps write efficient and reusable C++ programs.
+
+20. COMPLETE STL QUICK REVISION
+
+CONTAINERS:
+- vector: Dynamic array.
+- array: Fixed-size array.
+- list: Doubly linked list.
+- forward_list: Singly linked list.
+- deque: Double-ended queue.
+- set: Sorted unique elements.
+- multiset: Sorted duplicate elements.
+- map: Sorted unique key-value pairs.
+- multimap: Sorted key-value pairs with duplicate keys.
+- unordered_set: Unique unordered elements.
+- unordered_multiset: Unordered elements with duplicates.
+- unordered_map: Unordered unique key-value pairs.
+- unordered_multimap: Unordered key-value pairs with duplicate keys.
+- stack: LIFO.
+- queue: FIFO.
+- priority_queue: Priority-based access.
+
+ITERATORS:
+- begin()
+- end()
+- rbegin()
+- rend()
+- cbegin()
+- cend()
+
+IMPORTANT ALGORITHMS:
+- sort()
+- stable_sort()
+- reverse()
+- find()
+- count()
+- binary_search()
+- lower_bound()
+- upper_bound()
+- max_element()
+- min_element()
+- accumulate()
+- next_permutation()
+- prev_permutation()
+- unique()
+- remove()
+- remove_if()
+- replace()
+- fill()
+- copy()
+- merge()
+- partition()
+- nth_element()
+- rotate()
+- shuffle()
+- transform()
+- for_each()
+- all_of()
+- any_of()
+- none_of()
+
+IMPORTANT NUMERIC FUNCTIONS:
+- accumulate()
+- iota()
+- inner_product()
+- partial_sum()
+- adjacent_difference()
+- reduce()
+- gcd()
+- lcm()
+
+IMPORTANT CONTAINER FUNCTIONS:
+- push_back()
+- pop_back()
+- push_front()
+- pop_front()
+- emplace()
+- emplace_back()
+- insert()
+- erase()
+- clear()
+- size()
+- empty()
+- front()
+- back()
+- top()
+- find()
+- count()
+- swap()
+- resize()
+- reserve()
+- capacity()
+- lower_bound()
+- upper_bound()
+- equal_range()
+
+END OF C++ STL COMPLETE NOTES
